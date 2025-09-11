@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faTrash,  faSave } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from 'react-router-dom';
 
@@ -49,9 +49,9 @@ const AdministrarGuias = ({ guias, setGuias }) => {
       <h2 className="subtitulos mt-6">Administrar Guías Rápidas</h2>      
       <form onSubmit={handleAddGuia} 
         className="mb-6 p-4 rounded"
-        style={{ maxWidth: "800px", width: "100%", margin: "0 auto" }}
+        style={{ maxWidth: "8000px", width: "100%", margin: "0 auto" }}
       >
-        <h3 className="subtitulos mb-4 mt-2" style={{ width: "95%" }}>
+        <h3 className="subtitulos mb-4 mt-2" style={{ width: "100%" }}>
           {editId 
             ? `Editar Guía ${form.nombre}` 
             : "Agregar Nueva Guía"}
@@ -66,18 +66,15 @@ const AdministrarGuias = ({ guias, setGuias }) => {
                 required
             />
             <label className="ancho1" style={{ marginLeft: "15px" }}>Ruta del sistema:</label>
-                <input
-                    type="text"
-                    value={form.ruta}
-                    onChange={e => setForm({ ...form, ruta: e.target.value })}
-                    placeholder="Ej: /mesadepartes"
-                    className="border ancho2"
-                    required
-                />
-        </div>
-
-        <div className="mb-2 flex">
-            <label className="ancho1" style={{ marginRight: "50px" }}>Descripción:</label>
+            <input
+                type="text"
+                value={form.ruta}
+                onChange={e => setForm({ ...form, ruta: e.target.value })}
+                placeholder="Ej: /mesadepartes"
+                className="border ancho2"
+                required
+            />
+            <label className="ancho1">Descripción:</label>
             <textarea
                 value={form.descripcion}
                 onChange={e => setForm({ ...form, descripcion: e.target.value })}
@@ -85,8 +82,10 @@ const AdministrarGuias = ({ guias, setGuias }) => {
                 required
             />
         </div>
+
         <button type="submit" className="btn-primary">
-          {editId ? "Guardar Cambios" : "Agregar"}
+           <FontAwesomeIcon icon={faSave} style={{ marginRight: '6px' }} />
+                  {editId ? "Guardar Cambios" : "Agregar"}
         </button>
       </form>
 

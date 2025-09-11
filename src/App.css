@@ -235,31 +235,52 @@ body {
 }
 
 .ancho1{
-  margin-left: 15px;
-    max-width: 34%;
+   flex: 0 0 35%;
+  margin-left: 5px;
+    max-width: 8%;
     font-size: 12px;
 }
 
 .ancho2{
       flex: 0 0 35%;
-    max-width: 30%;
-    margin-left: 15px;
+    max-width: 18%;
+    margin-left: 5px;
     height: 1.5rem;
 }
 
 .ancho3{
       flex: 0 0 78%;
-    max-width: 75.5%;
-    margin-left: 15px;
+    max-width: 36.8%;
+    margin-left: 5px;
     height: 2rem;
 }
 
 .ancho4{
       flex: 0 0 85%;
-    max-width: 75.5%;
+    max-width: 3%;
     margin-left: 15px;
     height: 1.5rem;
 }
+
+.ancho5{
+   flex: 0 0 35%;
+  margin-left: 5px;
+    max-width: 3%;
+    font-size: 12px;
+}
+.ancho6{
+      flex: 0 0 78%;
+    max-width: 32%;
+    margin-left: 5px;
+    height: 2rem;
+}
+.ancho7{
+   flex: 0 0 35%;
+  margin-left: 5px;
+    max-width: 10%;
+    font-size: 12px;
+}
+
 
 .custom-table {
   width: 100%;

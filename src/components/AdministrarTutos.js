@@ -134,21 +134,24 @@ const AdministrarTutos = ({ guias }) => {
   return (
     <div className="p-6">
       <h2 className="subtitulos mt-6">Tutoriales de {guia.nombre}</h2>
-      <button className="btn-primary mt-2" onClick={() => navigate('/administrar')}> <FontAwesomeIcon icon={faArrowLeft} /> Volver</button>
-      <form onSubmit={handleAddTuto} className="mb-6 p-4 rounded" style={{ maxWidth: "800px", width: "100%", margin: "0 auto" }}>
-        <h3 className="subtitulos mb-4 mt-2" style={{ width: "97%" }}>
+      <div style={{ textAlign: 'left' }}>
+        <button className="btn-primary mt-2" onClick={() => navigate('/administrar')}>
+          <FontAwesomeIcon icon={faArrowLeft} /> Volver
+        </button>
+      </div>
+      <form onSubmit={handleAddTuto} className="mb-6 p-4 rounded" style={{ maxWidth: "8000px", width: "100%", margin: "0 auto" }}>
+        <h3 className="subtitulos mb-4" style={{ width: "100%", marginTop: "-8px" }}>
           {editId ? `Editar Tutorial ${form.nombre}` : "Agregar Nuevo Tutorial"}
         </h3>
         <div className="mb-2 flex items-center">
-          <label className="ancho1" style={{ marginRight: "25px" }}>Nombre del tutorial:</label>
-          <input type="text" value={form.nombre} onChange={e => setForm({ ...form, nombre: e.target.value })} className="border ancho4" required />
-        </div>
-        <div className="mb-2 flex">
-          <label className="ancho1" style={{ marginRight: "68px" }}>Descripción:</label>
-          <textarea value={form.descripcion} onChange={e => setForm({ ...form, descripcion: e.target.value })} className="border ancho3" required />
-        </div>
-        <div className="mb-2 flex items-center">
-          <label className="ancho1" style={{ marginRight: "92px" }}>Video:</label>
+          <label className="ancho1">Nombre del tutorial:</label>
+          <input type="text" value={form.nombre} onChange={e => setForm({ ...form, nombre: e.target.value })} className="border ancho2" required />
+          <label className="ancho1">Descripción:</label>
+          <textarea value={form.descripcion} onChange={e => setForm({ ...form, descripcion: e.target.value })} className="border ancho6" required />
+            <label className="ancho1">Página inicial PDF:</label>
+          <input type="number" min={1} value={form.startPage} onChange={e => setForm({ ...form, startPage: Number(e.target.value) })} className="border ancho4" />
+        
+          <label className="ancho5">Video:</label>
           <label className="btn-primary" style={{ marginLeft: '21px', cursor: 'pointer' }}>
             <FontAwesomeIcon icon={faVideo} />
             <input type="file" accept="video/*" onChange={e => setVideoFile(e.target.files[0])} style={{ display: 'none' }} />
@@ -163,10 +166,9 @@ const AdministrarTutos = ({ guias }) => {
               <FontAwesomeIcon icon={faEye} />
             </button>
           )}
-        </div>
-        <div className="mb-2 flex items-center">
-          <label className="ancho1" style={{ marginRight: "7px" }}>Documentación (PDF):</label>
-          <label className="btn-primary" style={{ marginLeft: '21px', cursor: 'pointer' }}>
+
+          <label className="ancho7">Documentación (PDF):</label>
+          <label className="btn-primary" style={{ cursor: 'pointer' }}>
             <FontAwesomeIcon icon={faFilePdf} />
             <input type="file" accept="application/pdf" onChange={e => setDocFile(e.target.files[0])} style={{ display: 'none' }} />
           </label>
@@ -180,11 +182,10 @@ const AdministrarTutos = ({ guias }) => {
               <FontAwesomeIcon icon={faEye} />
             </button>
           )}
+
+          
         </div>
-        <div className="mb-2 flex items-center">
-          <label className="ancho1" style={{ marginRight: "34px" }}>Página inicial PDF:</label>
-          <input type="number" min={1} value={form.startPage} onChange={e => setForm({ ...form, startPage: Number(e.target.value) })} className="border ancho4" />
-        </div>
+
         <button type="submit" className="btn-primary">
           <FontAwesomeIcon icon={faSave} style={{ marginRight: '6px' }} />
           {editId ? "Guardar Cambios" : "Agregar"}
