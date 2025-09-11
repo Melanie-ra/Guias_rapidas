@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import GuiasRapidas from './components/GuiasRapidas';
 import MesaVirtual from './components/MesaVirtual';
 import GestionDocumental from './components/GestionDocumental';
@@ -41,6 +41,7 @@ const initialGuias = [
 ];
 
 function App() {
+  const location = useLocation();
   const fechaActualizada = new Date().toLocaleDateString('es-PE', {
     year: 'numeric',
     month: 'long',
@@ -58,9 +59,12 @@ function App() {
     localStorage.setItem("guias", JSON.stringify(guias));
   }, [guias]);
 
+  // Determinar si mostrar encabezado
+  const showHeader = location.pathname === '/administrar' || location.pathname.startsWith('/tutoriales/');
+
   return (
-    <Router>
-      <div className="App">
+    <div className="App">
+      {showHeader && (
         <div
           style={{
             left: 0,
@@ -105,20 +109,20 @@ function App() {
             </div>
           </div>
         </div>
-        <div>
-          <Routes>
-            <Route path="/inicio" element={<GuiasRapidas guias={guias} />} />
-            <Route path="/mesadepartes" element={<MesaVirtual />} />
-            <Route path="/gestion-documentaria" element={<GestionDocumental />} />
-            <Route path="/gestion-contenidos" element={<GestionContenido />} />
-            <Route path="/mantenimiento" element={<Mantenimiento />} />
-            <Route path="/administrar" element={<AdministrarGuias guias={guias} setGuias={setGuias} />} />
-            <Route path="/tutoriales/:id" element={<AdministrarTutos guias={guias} />} />
-            <Route path="/" element={<Navigate to="/inicio" replace />} />
-          </Routes>
-        </div>
+      )}
+      <div>
+        <Routes>
+          <Route path="/inicio" element={<GuiasRapidas guias={guias} />} />
+          <Route path="/mesadepartes" element={<MesaVirtual />} />
+          <Route path="/gestion-documentaria" element={<GestionDocumental />} />
+          <Route path="/gestion-contenidos" element={<GestionContenido />} />
+          <Route path="/mantenimiento" element={<Mantenimiento />} />
+          <Route path="/administrar" element={<AdministrarGuias guias={guias} setGuias={setGuias} />} />
+          <Route path="/tutoriales/:id" element={<AdministrarTutos guias={guias} />} />
+          <Route path="/" element={<Navigate to="/inicio" replace />} />
+        </Routes>
       </div>
-    </Router>
+    </div>
   );
 }
 
