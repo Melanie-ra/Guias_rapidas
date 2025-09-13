@@ -154,11 +154,11 @@ body {
 .hover\:bg-red-600:hover { background-color: #dc2626; }
 
 .card {
-  background: white;
+  background: rgba(252, 246, 234, 0.5);
   border-radius: 0.5rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.401);
   max-width: 26rem;
-  border: 1px solid #c3c5c5;
+  border: 1px solid #99020b;
   display: flex;
   flex-direction: column;
   transition: box-shadow 0.15s;
@@ -168,7 +168,7 @@ body {
 }
 
 .card:hover {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 15px -3px rgba(26, 26, 26, 0.851);
 }
 
 .btn-primary {
@@ -187,10 +187,29 @@ body {
   color: white;
   padding: 5px 12px;
   font-size: 12px;
-  
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   border: none;
   cursor: pointer;
   transition: background-color 0.15s;
+}
+
+.btn-primary3 {
+  background: #99020b;
+  color: white;
+  padding: 3px 3px;
+  font-size: 11px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: 5px;
+  font-weight: 600;
+}
+.icon{
+  color: #99020b;
+  font-size: 18px;
+  margin-left: 10px;
 }
 
 .btn-primary:hover {

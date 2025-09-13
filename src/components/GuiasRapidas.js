@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MesaVirtual from './MesaVirtual';
-import { faBookOpen } from '@fortawesome/free-solid-svg-icons';
+import { faBookOpen, faFile } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const GuiasRapidas = ({ guias }) => {
@@ -53,14 +53,21 @@ const GuiasRapidas = ({ guias }) => {
         {guias.filter(g => !g.suspendida).map((guia) => (
           <div
             key={guia.id}
-            className="card"
+            className="card w-full"
             onClick={() => handleSystemSelect(guia)}
             style={{ cursor: 'pointer' }}
           >
             <div className="btn-primary2"></div>
-            <h3 className="mb-2 mt-2 text-center" style={{ fontSize: '17px', fontWeight: '600' }}>
-              {guia.nombre}
-            </h3>
+            <div className="flex items-center justify-between w-full min-w-0">
+              <div className="flex items-center flex-1 min-w-0">
+                <FontAwesomeIcon icon={faFile} className="mr-2 icon" />
+                <h3 className="mb-2 mt-2" style={{ fontSize: '17px', fontWeight: '600' }}>
+                  {guia.nombre}
+                </h3>
+              </div>
+              <label className="btn-primary3">Trámite</label>
+            </div>
+
             <p className="text-gray-600 mb-4" style={{ padding: '0.8rem 2rem' }}>{guia.descripcion}</p>
           </div>
         ))}
